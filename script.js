@@ -48,6 +48,10 @@ function updateDisplay() {
   }
   const formattedTime = formatTime(hours) + ":" + formatTime(minutes) + ":" + formatTime(seconds);
   document.getElementById("display").innerText = formattedTime;
+  
+  if (isRunning) {
+    recordLap();
+  }
 }
 
 function formatTime(time) {
