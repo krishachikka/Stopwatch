@@ -26,31 +26,32 @@ function reset() {
   updateDisplay();
   document.getElementById("display").innerText = "00:00:00";
   document.getElementById("startStop").innerText = "Start";
-  document.getElementById("lapList").innerHTML = ""; }
+  document.getElementById("lapList").innerHTML = "";
+}
 
 function recordLap() {
-  const lapTime = formatTime(hours) + ":" + formatTime(minutes) + ":" + formatTime(seconds);
-  const lapItem = document.createElement("li");
-  lapItem.innerText = `Lap ${lapCounter}: ${lapTime}`;
-  document.getElementById("lapList").appendChild(lapItem);
-  lapCounter++;
+  if (isRunning) {
+    const lapTime = formatTime(hours) + ":" + formatTime(minutes) + ":" + formatTime(seconds);
+    const lapItem = document.createElement("li");
+    lapItem.innerText = `Lap ${lapCounter}: ${lapTime}`;
+    document.getElementById("lapList").appendChild(lapItem);
+    lapCounter++;
+  }
 }
 
 function updateDisplay() {
-  seconds++;
-  if (seconds === 60) {
-    seconds = 0;
-    minutes++;
-    if (minutes === 60) {
-      minutes = 0;
-      hours++;
-    }
-  }
-  const formattedTime = formatTime(hours) + ":" + formatTime(minutes) + ":" + formatTime(seconds);
-  document.getElementById("display").innerText = formattedTime;
-  
   if (isRunning) {
-    recordLap();
+    seconds++;
+    if (seconds === 60) {
+      seconds = 0;
+      minutes++;
+      if (minutes === 60) {
+        minutes = 0;
+        hours++;
+      }
+    }
+    const formattedTime = formatTime(hours) + ":" + formatTime(minutes) + ":" + formatTime(seconds);
+    document.getElementById("display").innerText = formattedTime;
   }
 }
 
