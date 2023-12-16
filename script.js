@@ -30,13 +30,11 @@ function reset() {
 }
 
 function recordLap() {
-  if (isRunning) {
-    const lapTime = formatTime(hours) + ":" + formatTime(minutes) + ":" + formatTime(seconds);
-    const lapItem = document.createElement("li");
-    lapItem.innerText = `Lap ${lapCounter}: ${lapTime}`;
-    document.getElementById("lapList").appendChild(lapItem);
-    lapCounter++;
-  }
+  const lapTime = formatTime(hours) + ":" + formatTime(minutes) + ":" + formatTime(seconds);
+  const lapItem = document.createElement("li");
+  lapItem.innerText = `Lap ${lapCounter}: ${lapTime}`;
+  document.getElementById("lapList").appendChild(lapItem);
+  lapCounter++;
 }
 
 function updateDisplay() {
